@@ -248,19 +248,14 @@
             "outputPath": "dist/apps/task-management",
             "main": "apps/task-management/src/main.ts",
             "tsConfig": "apps/task-management/tsconfig.app.json",
-            "assets": ["apps/task-management/src/assets"]
+            "assets": []
           },
           "configurations": {
             "production": {
               "optimization": true,
               "extractLicenses": true,
               "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/task-management/src/environments/environment.ts",
-                  "with": "apps/task-management/src/environments/environment.prod.ts"
-                }
-              ]
+              "fileReplacements": []
             }
           }
         },
