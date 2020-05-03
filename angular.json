@@ -234,6 +234,61 @@
           "style": "scss"
         }
       }
+    },
+    "task-management": {
+      "root": "apps/task-management",
+      "sourceRoot": "apps/task-management/src",
+      "projectType": "application",
+      "prefix": "task-management",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/task-management",
+            "main": "apps/task-management/src/main.ts",
+            "tsConfig": "apps/task-management/tsconfig.app.json",
+            "assets": ["apps/task-management/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/task-management/src/environments/environment.ts",
+                  "with": "apps/task-management/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "task-management:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/task-management/tsconfig.app.json",
+              "apps/task-management/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/task-management/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/task-management/jest.config.js",
+            "tsConfig": "apps/task-management/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {
