@@ -1,0 +1,13 @@
+import { Module } from '@nestjs/common';
+import { ItemsService } from './services/items.service';
+import { ItemsResolver } from './resolvers/items.resolver';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ItemSchema } from './item.schema';
+
+@Module({
+  imports: [
+    MongooseModule.forFeature([{ name: 'Item', schema: ItemSchema }])
+  ],
+  providers: [ItemsService, ItemsResolver]
+})
+export class ItemsModule {}
