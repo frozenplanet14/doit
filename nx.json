@@ -37,6 +37,13 @@
     },
     "task-management": {
       "tags": []
+    },
+    "task-ui": {
+      "tags": []
+    },
+    "task-ui-e2e": {
+      "tags": [],
+      "implicitDependencies": ["task-ui"]
     }
   }
 }
